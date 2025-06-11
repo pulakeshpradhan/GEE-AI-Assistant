@@ -1,15 +1,30 @@
-Privacy Policy: Google Earth Engine AI Assistant
+# 🔒 Privacy Policy: Google Earth Engine AI Assistant
 
-Developer: Pulakesh Pradhan
-Contact: https://pulakeshpradhan.github.io
-This extension sends user data to the Google Gemini API to function.
+**Developer:** Pulakesh Pradhan  
+**Contact:** [https://pulakeshpradhan.github.io](https://pulakeshpradhan.github.io)
 
-Data Collected:
+This extension uses the Google Gemini API to function. Some user data is transmitted to provide a better experience.
 
-Gemini API Key: Collected for authenticating with Google's API and saved in your browser's storage for convenience (chrome.storage.sync).
-User Content: Your prompts, GEE code from the editor, and console errors are collected to provide context to the AI.
-Data Usage:
+---
 
-All collected data is sent directly to the Google Gemini API endpoint to process your requests.
-The developer does not see, log, store, or sell any of this data.
-For questions, please use the contact link above.
+## 📦 Data Collected
+
+- **Gemini API Key**  
+  - Used to authenticate with Google's API.  
+  - Securely saved in your browser's storage (`chrome.storage.sync`) for convenience.
+
+- **User Content**  
+  - Includes your prompts, GEE code from the editor, and console errors.  
+  - Collected to give the AI enough context to respond meaningfully.
+
+---
+
+## 🔐 Data Usage
+
+- All collected data is **sent directly to the Google Gemini API** to process your requests.
+- The **developer does NOT** see, log, store, or sell any of your data.
+
+---
+
+For any questions or concerns, please reach out via the [contact link](https://pulakeshpradhan.github.io).
+
