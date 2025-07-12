@@ -1,4 +1,4 @@
-# 🔒 Privacy Policy: Google Earth Engine AI Assistant
+# 🔒 Privacy Policy: GEE AI Assistant
 
 **Developer:** Pulakesh Pradhan  
 **Contact:** [https://pulakeshpradhan.github.io](https://pulakeshpradhan.github.io)
