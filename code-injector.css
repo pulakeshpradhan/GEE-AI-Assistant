@@ -1,0 +1,44 @@
+/*
+Copyright © 2025 Pulakesh Pradhan.
+All rights reserved.
+*/
+
+/* Base style for the "Inject to GEE" button */
+.gee-inject-button {
+    /* Positioning is now handled by JavaScript using 'position: absolute'. */
+    /* This button will be placed relative to the nearest parent with 'position: relative'. */
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 4px 8px;
+    background-color: #4a4a4a; 
+    color: #f1f1f1;
+    border: 1px solid #6c6c6c;
+    border-radius: 4px;
+    font-family: sans-serif, system-ui;
+    font-size: 12px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.2s, opacity 0.2s;
+    opacity: 0.85;
+    z-index: 9999; /* High z-index to ensure it appears above other elements in the code block. */
+}
+
+.gee-inject-button:hover {
+    background-color: #6c6c6c;
+    opacity: 1;
+}
+
+.gee-inject-button img {
+    width: 14px;
+    height: 14px;
+}
+
+/* **CRITICAL RULE** This rule makes the parent code block containers a "positioning context".
+  Without this, the absolutely positioned button would be placed relative to the 
+  entire page instead of in the corner of its code block.
+*/
+div.code-block,           /* Selector for Gemini */
+pre[class*="overflow-visible"] { /* Selector for ChatGPT */
+    position: relative;
+}

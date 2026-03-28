@@ -1,0 +1,89 @@
+{
+  "manifest_version": 3,
+  "name": "GEE AI Assistant",
+  "version": "1.8.3",
+  "author": "Pulakesh Pradhan",
+  "description": "Generate, modify, and fix Google Earth Engine code using AI Models. Now with new Voice Mode & 5200+ Datasets!",
+  "permissions": [
+    "storage",
+    "scripting",
+    "sidePanel",
+    "tabs",
+    "declarativeNetRequest"
+  ],
+  "host_permissions": [
+    "<all_urls>"
+  ],
+  "action": {
+    "default_title": "Open Assistant Sidebar"
+  },
+  "options_page": "options.html",
+  "side_panel": {
+    "default_path": "sidepanel.html"
+  },
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "https://code.earthengine.google.com/*",
+        "https://code.earthengine.google.co.in/*"
+      ],
+      "js": [
+        "content.js"
+      ],
+      "run_at": "document_end"
+    },
+    {
+      "matches": [
+        "https://gemini.google.com/*",
+        "https://chatgpt.com/*",
+        "https://copilot.microsoft.com/*",
+        "https://claude.ai/*",
+        "https://grok.com/*",
+        "https://chat.deepseek.com/*",
+        "https://chat.qwen.ai/*",
+        "https://www.kimi.com/*"
+      ],
+      "js": [
+        "code-injector.js"
+      ],
+      "css": [
+        "code-injector.css"
+      ],
+      "all_frames": true
+    }
+  ],
+  "icons": {
+    "16": "icons/icon16.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  },
+  "web_accessible_resources": [
+    {
+      "resources": [
+        "icons/inject.svg"
+      ],
+      "matches": [
+        "https://gemini.google.com/*",
+        "https://chatgpt.com/*",
+        "https://copilot.microsoft.com/*",
+        "https://claude.ai/*",
+        "https://grok.com/*",
+        "https://chat.deepseek.com/*",
+        "https://chat.qwen.ai/*",
+        "https://www.kimi.com/*"
+      ]
+    },
+    {
+      "resources": [
+        "gee_injector.js"
+      ],
+      "matches": [
+        "https://code.earthengine.google.com/*",
+        "https://code.earthengine.google.co.in/*"
+      ]
+    }
+  ]
+}

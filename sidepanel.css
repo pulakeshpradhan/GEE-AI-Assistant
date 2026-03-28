@@ -1,0 +1,716 @@
+/* sidepanel.css */
+/*
+Copyright © 2025 Pulakesh Pradhan.  
+All rights reserved.
+
+This file is part of the project: **GEE AI Assistant**.  
+Unauthorized copying, distribution, modification, or use of this code, in whole or in part, is strictly prohibited without the express written permission of the copyright holder.
+
+For permissions or inquiries: contact: pulakesh.mid@gmail.com
+*/
+
+:root {
+    --primary-color: #007bff;
+    --primary-hover: #0056b3;
+    --download-color: #28a745;
+    --download-hover: #218838;
+    --r-color: #1a5fb4;
+    /* R language blue */
+    --r-hover: #134b94;
+    --background-color: #f4f7f9;
+    --section-bg: #ffffff;
+    --text-color: #333;
+    --label-color: #454545;
+    --border-color: #e0e0e0;
+    --input-border: #ccc;
+    --shadow: 0 1px 4px rgba(0, 0, 0, 0.07);
+    --highlight-bg: #e7f1ff;
+    /* Light blue for highlight */
+    --highlight-border: #a0c7ff;
+    /* Lighter blue border for highlight */
+    --mic-record-color: #dc3545;
+}
+
+body,
+html {
+    font-family: 'Inter', sans-serif;
+    background-color: var(--background-color);
+    color: var(--text-color);
+    margin: 0;
+    padding: 0;
+    line-height: 1.4;
+    font-size: 14px;
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+/* Tab System */
+.tab-container {
+    display: flex;
+    background-color: #e9ecef;
+    padding: 4px;
+    gap: 4px;
+    flex-shrink: 0;
+    position: relative;
+    z-index: 1001;
+}
+
+.tab-button {
+    flex: 1;
+    padding: 5px 6px;
+    font-size: 14px;
+    font-weight: 500;
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.2s, color 0.2s;
+    color: #495057;
+    /* Added for flexbox alignment inside the div version */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.tab-button.active {
+    background-color: var(--section-bg);
+    color: var(--primary-color);
+    font-weight: 600;
+}
+
+.tab-button:not(.active):hover {
+    background-color: #d8dde2;
+}
+
+/* --- New Hover Dropdown Tab --- */
+.dropdown-tab-container {
+    position: relative;
+}
+
+.dropdown-menu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background-color: var(--section-bg);
+    padding: 8px;
+    border: 1px solid var(--border-color);
+    border-top: none;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 0 0 5px 5px;
+}
+
+.dropdown-tab-container:hover .dropdown-menu {
+    display: block;
+}
+
+.dropdown-menu .input {
+    width: 100%;
+}
+
+/* Mode Toggle Buttons */
+.mode-toggle-container {
+    display: flex;
+    background-color: #e9ecef;
+    padding: 3px;
+    border-radius: 6px;
+    flex: 1;
+}
+
+.mode-btn {
+    flex: 1;
+    padding: 6px 0;
+    font-size: 13px;
+    font-weight: 500;
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+    border-radius: 4px;
+    color: #495057;
+    transition: all 0.2s;
+}
+
+.mode-btn.active {
+    background-color: var(--section-bg);
+    color: var(--primary-color);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    font-weight: 600;
+}
+
+/* Tab Content Area */
+.tab-content {
+    display: none;
+    flex-grow: 1;
+    overflow-y: auto;
+}
+
+/* AI Assistant content has padding */
+#gee-assistant.tab-content {
+    padding: 8px;
+}
+
+
+.tab-content.active {
+    display: flex;
+    flex-direction: column;
+}
+
+/* Specific styling for AI chat panel */
+#ai-chat-content.tab-content {
+    padding: 0;
+    /* Remove padding for iframe */
+}
+
+#ai-chat-iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+    flex-grow: 1;
+}
+
+
+/* Header */
+.header {
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+/* Author Info Card Styling */
+.author-info {
+    text-align: center;
+    padding: 12px;
+    background-color: var(--section-bg);
+    border-radius: 8px;
+    border: 1px solid var(--border-color);
+    box-shadow: var(--shadow);
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+/* Name and University */
+.author-info div:first-child {
+    font-weight: 700;
+    color: #2c3e50;
+    font-size: 13px;
+    letter-spacing: 0.3px;
+}
+
+/* Link */
+.author-info a {
+    color: var(--primary-color);
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 12px;
+    transition: color 0.2s;
+}
+
+.author-info a:hover {
+    color: var(--primary-hover);
+    text-decoration: underline;
+}
+
+/* Location (The newly added 3rd div) */
+.author-info div:nth-child(3) {
+    color: #7f8c8d;
+    font-size: 11px;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+}
+
+/* Optional: Add a subtle icon via CSS before location if desired, 
+   but keeping it clean as per "improvise style" */
+
+/* Status Bar */
+.status-bar {
+    padding: 7px;
+    border-radius: 5px;
+    font-size: 13px;
+    text-align: center;
+    min-height: 1.4em;
+    background-color: #e9ecef;
+    color: #495057;
+    font-weight: 500;
+    margin-top: 5px;
+    line-height: 1.5;
+}
+
+.status-bar a {
+    color: var(--primary-hover);
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.status-bar a:hover {
+    text-decoration: underline;
+}
+
+.status-bar:empty {
+    display: none;
+}
+
+/* Sections */
+.section {
+    background-color: var(--section-bg);
+    padding: 9px;
+    border-radius: 6px;
+    box-shadow: var(--shadow);
+    margin-bottom: 8px;
+}
+
+.label-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 4px;
+}
+
+.label {
+    display: block;
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--label-color);
+}
+
+.label a {
+    color: var(--primary-color);
+    text-decoration: none;
+    font-weight: 1000;
+}
+
+.label a:hover {
+    text-decoration: underline;
+}
+
+/* API Key and Model Selector Container */
+.api-key-container {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+}
+
+.api-key-container #modelSelector {
+    flex: 1;
+}
+
+.api-key-container #apiKeyInput {
+    flex: 2;
+}
+
+
+/* Inputs and Textareas */
+.input,
+.textarea {
+    width: 100%;
+    padding: 7px;
+    font-family: 'Inter', sans-serif;
+    /* User requested sans-serif */
+    font-size: 15px;
+    /* User requested increased font size */
+    border: 1px solid var(--input-border);
+    border-radius: 5px;
+    box-sizing: border-box;
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+
+.input:focus,
+.textarea:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.15);
+}
+
+.textarea {
+    resize: vertical;
+    margin-bottom: 8px;
+}
+
+.help-text {
+    font-size: 11px;
+    color: #666;
+    margin: 6px 0 0 0;
+}
+
+.help-text a {
+    color: var(--primary-color);
+}
+
+/* Checkbox Container Styling */
+.checkbox-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 10px;
+    padding: 8px;
+    border-radius: 6px;
+    border: 1px solid var(--border-color);
+    background-color: var(--background-color);
+    transition: all 0.3s ease-in-out;
+}
+
+.checkbox-container .label {
+    margin-bottom: 0;
+    font-weight: 500;
+    color: var(--label-color);
+    transition: color 0.3s ease-in-out;
+}
+
+.checkbox {
+    height: 18px;
+    width: 18px;
+    accent-color: var(--primary-color);
+    cursor: pointer;
+}
+
+.checkbox-container:has(.checkbox:checked) {
+    background-color: var(--highlight-bg);
+    border-color: var(--highlight-border);
+}
+
+.checkbox-container:has(.checkbox:checked) .label {
+    color: var(--primary-hover);
+    font-weight: 600;
+}
+
+
+/* Analysis Container & Searchable Dropdown */
+.analysis-container {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+}
+
+.searchable-dropdown {
+    position: relative;
+    flex-grow: 1;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #ffffff;
+    width: 100%;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.15);
+    z-index: 10;
+    border-radius: 5px;
+    border: 1px solid var(--border-color);
+    max-height: 210px;
+    overflow-y: auto;
+    box-sizing: border-box;
+}
+
+.dropdown-content.show {
+    display: block;
+}
+
+.dropdown-option {
+    padding: 8px 12px;
+    text-decoration: none;
+    display: block;
+    cursor: pointer;
+    font-size: 14px;
+    color: var(--text-color);
+    border-bottom: 1px solid var(--border-color);
+}
+
+.dropdown-option:last-child {
+    border-bottom: none;
+}
+
+.dropdown-option:hover {
+    background-color: #f1f1f1;
+}
+
+.analysis-container .btn {
+    width: auto;
+    flex-shrink: 0;
+}
+
+
+/* Buttons */
+.action-buttons {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 6px;
+    margin-bottom: 8px;
+}
+
+.btn {
+    display: inline-block;
+    width: 100%;
+    padding: 6px 10px;
+    background-color: var(--primary-color);
+    color: white;
+    font-size: 14px;
+    font-weight: 500;
+    text-align: center;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.2s, transform 0.1s;
+}
+
+.btn:hover {
+    background-color: var(--primary-hover);
+    transform: translateY(-1px);
+}
+
+.btn:disabled {
+    background-color: #a0c7ff;
+    cursor: wait;
+    transform: translateY(0);
+}
+
+.btn:disabled:hover {
+    transform: translateY(0);
+}
+
+
+.btn-full {
+    width: 100%;
+    grid-column: span 4;
+}
+
+.btn-download {
+    background-color: var(--download-color);
+}
+
+.btn-download:hover {
+    background-color: var(--download-hover);
+}
+
+.btn-download:disabled {
+    background-color: #94d3a2;
+    cursor: wait;
+}
+
+.btn-r {
+    background-color: var(--r-color);
+}
+
+.btn-r:hover {
+    background-color: var(--r-hover);
+}
+
+.btn-r:disabled {
+    background-color: #89addb;
+    cursor: wait;
+}
+
+/* Mic Button */
+.mic-button {
+    background-color: #6c757d;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 28px;
+    height: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: background-color 0.2s, transform 0.1s;
+}
+
+.mic-button:hover {
+    background-color: #5a6268;
+}
+
+.mic-button.is-recording {
+    background-color: var(--mic-record-color);
+    animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+    0% {
+        box-shadow: 0 0 0 0 rgba(220, 53, 69, 0.7);
+    }
+
+    70% {
+        box-shadow: 0 0 0 10px rgba(220, 53, 69, 0);
+    }
+
+    100% {
+        box-shadow: 0 0 0 0 rgba(220, 53, 69, 0);
+    }
+}
+
+.mic-button:disabled {
+    background-color: #adb5bd;
+    cursor: not-allowed;
+    opacity: 0.7;
+}
+
+/* Big Auto Mode Mic */
+.big-mic-container {
+    width: 60px;
+    height: 60px;
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(0, 123, 255, 0.3);
+    transition: all 0.3s ease;
+}
+
+.big-mic-container:hover {
+    background-color: var(--primary-hover);
+    transform: scale(1.05);
+}
+
+.big-mic-container.is-listening {
+    background-color: var(--mic-record-color);
+    animation: bigPulse 1.5s infinite;
+}
+
+@keyframes bigPulse {
+    0% {
+        box-shadow: 0 0 0 0 rgba(220, 53, 69, 0.7);
+    }
+
+    70% {
+        box-shadow: 0 0 0 20px rgba(220, 53, 69, 0);
+    }
+
+    100% {
+        box-shadow: 0 0 0 0 rgba(220, 53, 69, 0);
+    }
+}
+
+.hidden {
+    display: none;
+}
+
+/* Toggle Switch */
+.toggle-switch {
+    display: flex;
+    align-items: center;
+}
+
+.checkbox-toggle {
+    display: none;
+}
+
+.toggle-label {
+    width: 36px;
+    height: 20px;
+    background: #ccc;
+    border-radius: 20px;
+    position: relative;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.toggle-label::after {
+    content: '';
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    width: 16px;
+    height: 16px;
+    background: white;
+    border-radius: 50%;
+    transition: left 0.3s;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+.checkbox-toggle:checked+.toggle-label {
+    background: var(--download-color);
+    /* Green for active */
+}
+
+.checkbox-toggle:checked+.toggle-label::after {
+    left: 18px;
+}
+
+/* Modern Dataset Cards */
+.dataset-card {
+    padding: 12px 14px;
+    border-bottom: 1px solid var(--border-color);
+    transition: background-color 0.2s ease;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.dataset-card:hover {
+    background-color: #f8f9fa;
+}
+
+.dataset-title {
+    font-weight: 600;
+    font-size: 13px;
+    color: #202124;
+    line-height: 1.4;
+}
+
+.dataset-id-container {
+    display: flex;
+}
+
+.dataset-id {
+    font-size: 11px;
+    color: #5f6368;
+    font-family: 'Consolas', monospace;
+    background: #f1f3f4;
+    padding: 3px 6px;
+    border-radius: 4px;
+    word-break: break-all;
+}
+
+.dataset-actions {
+    display: flex;
+    gap: 6px;
+    flex-wrap: wrap;
+    margin-top: 4px;
+}
+
+.dataset-action-btn {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    background: white;
+    border: 1px solid #dadce0;
+    border-radius: 20px;
+    padding: 5px 12px;
+    font-size: 13px;
+    font-weight: 500;
+    color: #444746;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    font-family: 'Inter', sans-serif;
+}
+
+.dataset-action-btn:hover {
+    background: #f0f4f9;
+    color: #1f1f1f;
+}
+
+.dataset-action-btn.action-add-chat svg {
+    color: #1a73e8;
+    /* Blue */
+}
+
+.dataset-action-btn.action-add-editor svg {
+    color: #ea4335;
+    /* Red */
+}
+
+.dataset-action-btn.action-view-example svg {
+    color: #f29900;
+    /* Orange */
+}

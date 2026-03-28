@@ -1,0 +1,165 @@
+<!-- /*
+Copyright © 2025 Pulakesh Pradhan.  
+All rights reserved.
+
+This file is part of the project: **GEE AI Assistant**.  
+Unauthorized copying, distribution, modification, or use of this code, in whole or in part, is strictly prohibited without the express written permission of the copyright holder.
+
+For permissions or inquiries, contact: pulakesh.mid@gmail.com
+*/ -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GEE AI Assistant - Permissions</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --background-color: #f4f7f9;
+            --section-bg: #ffffff;
+            --text-color: #333;
+            --label-color: #454545;
+            --border-color: #e0e0e0;
+            --primary-color: #007bff;
+            --primary-hover: #0056b3;
+            --success-color: #28a745;
+            --error-color: #dc3545;
+            --warning-color: #ffc107;
+            --shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--background-color);
+            color: var(--text-color);
+            margin: 0;
+            padding: 24px;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            min-height: 100vh;
+        }
+        .container {
+            max-width: 600px;
+            width: 100%;
+            background-color: var(--section-bg);
+            border-radius: 8px;
+            box-shadow: var(--shadow);
+            padding: 24px;
+        }
+        h1 {
+            font-size: 24px;
+            font-weight: 600;
+            text-align: center;
+            margin-bottom: 24px;
+        }
+        .permission-card {
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .permission-info {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+        .permission-info svg {
+            width: 32px;
+            height: 32px;
+            flex-shrink: 0;
+        }
+        .permission-details h2 {
+            font-size: 18px;
+            margin: 0 0 4px 0;
+        }
+        .permission-details p {
+            margin: 0;
+            font-size: 14px;
+            color: #666;
+        }
+        .status-badge {
+            padding: 4px 12px;
+            border-radius: 16px;
+            font-weight: 600;
+            font-size: 14px;
+            color: white;
+        }
+        .status-granted { background-color: var(--success-color); }
+        .status-denied { background-color: var(--error-color); }
+        .status-prompt { background-color: var(--warning-color); color: var(--text-color); }
+
+        .instructions {
+            margin-top: 24px;
+            padding: 16px;
+            background-color: #f8f9fa;
+            border-radius: 8px;
+        }
+        .instructions h3 {
+            margin-top: 0;
+            font-size: 16px;
+        }
+        .instructions p, .instructions li {
+            font-size: 14px;
+            line-height: 1.6;
+        }
+        .instructions ol {
+            padding-left: 20px;
+        }
+        .instructions img {
+            max-width: 100%;
+            border-radius: 4px;
+            margin-top: 8px;
+            border: 1px solid var(--border-color);
+        }
+        .btn {
+            padding: 10px 16px;
+            background-color: var(--primary-color);
+            color: white;
+            font-size: 14px;
+            font-weight: 500;
+            border-radius: 5px;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+        .btn:hover {
+            background-color: var(--primary-hover);
+        }
+        .btn:disabled {
+            background-color: #a0c7ff;
+            cursor: not-allowed;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Extension Permissions</h1>
+
+        <div class="permission-card">
+            <div class="permission-info">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="bi bi-mic-fill" viewBox="0 0 16 16">
+                    <path d="M5 3a3 3 0 0 1 6 0v5a3 3 0 0 1-6 0V3z"/>
+                    <path d="M3.5 6.5A.5.5 0 0 1 4 7v1a4 4 0 0 0 8 0V7a.5.5 0 0 1 1 0v1a5 5 0 0 1-4.5 4.975V15h3a.5.5 0 0 1 0 1h-7a.5.5 0 0 1 0-1h3v-2.025A5 5 0 0 1 3 8V7a.5.5 0 0 1 .5-.5z"/>
+                </svg>
+                <div class="permission-details">
+                    <h2>Microphone Access</h2>
+                    <p>Required for voice-to-text dictation.</p>
+                </div>
+            </div>
+            <div id="mic-status-badge" class="status-badge">Checking...</div>
+        </div>
+
+        <div id="permission-cta" class="instructions" style="display: none;">
+            <!-- Content will be injected by JavaScript -->
+        </div>
+    </div>
+
+    <script src="options.js"></script>
+</body>
+</html>
